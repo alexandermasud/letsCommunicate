@@ -31,7 +31,6 @@ router.get("/me", auth, async (req, res) => {
 // @route    POST api/profile
 // @desc     Create or Update user profile
 // @access   Private
-
 router.post(
   "/",
   [
@@ -101,4 +100,40 @@ router.post(
     }
   }
 );
+
+// @route    GET api/profile/
+// @desc     Get all profiles
+// @access   Public
+
+router.get("/", async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.messange);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route    GET api/profile/users/:user_id
+// @desc     Get profile by user id
+// @access   Public
+
+router.get("/user/:user_id", async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id
+    }).populate("user", ["name", "avatar"]);
+
+    if (!profile) return res.status(400).json({ msg: "Ingen profil hittad" });
+
+    res.json(profile);
+  } catch (err) {
+    console.error(err.messange);
+    if (err.kind == "ObjectID") {
+      return res.status(400).json({ msg: "Ingen profil hittad" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
 module.exports = router;
