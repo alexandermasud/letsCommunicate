@@ -18,13 +18,13 @@ const ProfileSchema = new mongoose.Schema({
     required: true
   },
   status: {
-    type: String,
+    type: Boolean,
     required: true
   },
   bio: {
     type: String
   },
-  yearsActive: {
+  startedYear: {
     type: Number
   },
   hobbies: {
