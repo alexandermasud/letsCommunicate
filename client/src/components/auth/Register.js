@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,12 +15,12 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
       console.log("Lösenord matchar inte");
     } else {
-      console.log(formData);
+      console.log("Success");
     }
   };
 
@@ -79,7 +80,7 @@ const Register = () => {
         <input type="submit" className="btn btn-primary" value="Registrera" />
       </form>
       <p className="my-1">
-        Har du redan ett konto? <a href="login.html">Logga in</a>
+        Har du redan ett konto? <Link to="/login">Logga in</Link>
       </p>
     </Fragment>
   );
