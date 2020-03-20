@@ -1,22 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Developer Connector</h1>
+          <h1 className="x-large">internalCommunication</h1>
           <p className="lead">
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            Skapa en profil, skapa inlägg och få tankar och idéer från kolleger
           </p>
           <div className="buttons">
-            <a href="register.html" className="btn btn-primary">
-              Sign Up
-            </a>
-            <a href="login.html" className="btn btn-light">
-              Login
-            </a>
+            <Link to="/register" className="btn btn-primary">
+              Registrera
+            </Link>
+            <Link to="/login" className="btn btn-light">
+              Logga in
+            </Link>
           </div>
         </div>
       </div>
