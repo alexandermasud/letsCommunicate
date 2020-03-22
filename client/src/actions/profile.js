@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "./types";
+import { GET_PROFILE, PROFILE_ERROR } from "./types";
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
@@ -32,6 +32,20 @@ export const createProfile = (
         "Content-Type": "application/json"
       }
     };
+
+    const formData1 = {
+      company: "fakeIT",
+      title: "Junior Web Developer",
+      department: "Development",
+      status: true,
+      bio: "Ny här, men tycker det är väldigt trevligt",
+      startedYear: 2020,
+      hobbies: "Fotboll, Basket, Foto",
+      linkedIn: ""
+    };
+
+    console.log(formData);
+    console.log(formData1);
 
     const res = await axios.post("/api/profile", formData, config);
 
