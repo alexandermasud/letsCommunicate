@@ -48,7 +48,7 @@ router.post(
 
     const {
       company,
-      position,
+      title,
       department,
       status,
       bio,
@@ -62,14 +62,18 @@ router.post(
 
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (position) profileFields.position = position;
-    if (department) profileFields.department = department;
-    if (status) profileFields.status = status;
-    if (bio) profileFields.bio = bio;
-    if (startedYear) profileFields.startedYear = startedYear;
+    if (company) profileFields.company = toString(company);
+    if (title) profileFields.title = toString(title);
+    if (department) profileFields.department = toString(department);
+    if (status) profileFields.status = JSON.parse(status);
+    if (bio) profileFields.bio = toString(bio);
+    if (startedYear) profileFields.startedYear = parseInt(startedYear);
     if (hobbies) {
-      profileFields.hobbies = hobbies.split(",").map(hobbie => hobbie.trim());
+      console.log(hobbies);
+      console.log(typeof hobbies);
+      profileFields.hobbies = toString(hobbies)
+        .split(",")
+        .map(hobbie => hobbie.trim());
     }
     if (linkedIn) profileFields.linkedIn = linkedIn;
     if (lastUpdated) profileFields.lastUpdated = lastUpdated;
