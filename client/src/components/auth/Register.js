@@ -57,8 +57,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            Denna site använder
-            <a href="https://en.gravatar.com"> Gravatar </a>för profilbilder
+            Denna site använder Gravatar för profilbilder
           </small>
         </div>
         <div className="form-group">

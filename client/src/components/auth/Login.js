@@ -54,7 +54,7 @@ const Login = ({ login, isAuthenticated }) => {
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
       <p className="my-1">
-        HAr du inte ett konto? <Link to="/register">Registrera</Link>
+        Har du inte ett konto? <Link to="/register">Registrera</Link>
       </p>
     </Fragment>
   );
