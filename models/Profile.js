@@ -9,7 +9,7 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  position: {
+  title: {
     type: String,
     required: true
   },
