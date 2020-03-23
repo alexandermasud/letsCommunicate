@@ -9,7 +9,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <ul>
       <li>
         {" "}
-        <Link to="/profiles">Kollegor</Link>
+        <Link to="/profiles">Deltagare</Link>
       </li>
       <li>
         {" "}
@@ -33,11 +33,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
-      <li>
-        {" "}
-        <Link to="/profiles">Kollegor</Link>
-      </li>
-
       <li>
         <Link to="/register">Registrera</Link>
       </li>

@@ -12,7 +12,7 @@ const initialState = {
   bio: "",
   startedYear: "",
   hobbies: "",
-  linkedin: ""
+  linkedIn: " "
 };
 
 const EditProfile = ({
