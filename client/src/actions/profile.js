@@ -1,7 +1,12 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 
-import { GET_PROFILE, PROFILE_ERROR } from "./types";
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  CLEAR_PROFILE,
+  ACCOUNT_DELETED
+} from "./types";
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
@@ -70,5 +75,24 @@ export const createProfile = (
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
+  }
+};
+
+// Delete account & profile
+export const deleteAccount = () => async dispatch => {
+  if (window.confirm("Är du säker på att du vill ta bort ditt konto?")) {
+    try {
+      await axios.delete("/api/profile");
+
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: ACCOUNT_DELETED });
+
+      dispatch(setAlert("Ditt konto har blivit borttaget"));
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
