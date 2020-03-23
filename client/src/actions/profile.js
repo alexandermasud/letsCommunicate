@@ -3,6 +3,7 @@ import { setAlert } from "./alert";
 
 import {
   GET_PROFILE,
+  GET_PROFILES,
   PROFILE_ERROR,
   CLEAR_PROFILE,
   ACCOUNT_DELETED
@@ -25,6 +26,41 @@ export const getCurrentProfile = () => async dispatch => {
   }
 };
 
+// Get all profiles
+export const getProfiles = () => async dispatch => {
+  dispatch({ type: CLEAR_PROFILE });
+  try {
+    const res = await axios.get("/api/profile/");
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get profile by id
+export const getProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/profile/user/${userId}`);
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
 // Create or update profile
 export const createProfile = (
   formData,
@@ -37,20 +73,6 @@ export const createProfile = (
         "Content-Type": "application/json"
       }
     };
-
-    const formData1 = {
-      company: "fakeIT",
-      title: "Junior Web Developer",
-      department: "Development",
-      status: true,
-      bio: "Ny här, men tycker det är väldigt trevligt",
-      startedYear: 2020,
-      hobbies: "Fotboll, Basket, Foto",
-      linkedIn: ""
-    };
-
-    console.log(formData);
-    console.log(formData1);
 
     const res = await axios.post("/api/profile", formData, config);
 
