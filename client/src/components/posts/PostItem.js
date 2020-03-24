@@ -14,10 +14,8 @@ const PostItem = ({
 }) => (
   <div className="post bg-white p-1 my-1">
     <div>
-      <a href="profile.html">
-        <img className="round-img" src={avatar} alt="Profilbild" />
-        <h4>{name}</h4>
-      </a>
+      <img className="round-img" src={avatar} alt="Profilbild" />
+      <h4>{name}</h4>
     </div>
     <div>
       <p className="my-1">{text}</p>
@@ -40,7 +38,7 @@ const PostItem = ({
         <i className="fas fa-thumbs-down"></i>
       </button>
       <Link to={`/post/${_id}`} className="btn btn-primary">
-        Discussion{" "}
+        Diskussion{" "}
         {comments.length > 0 && (
           <span className="comment-count">{comments.length}</span>
         )}
