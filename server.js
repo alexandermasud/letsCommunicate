@@ -22,7 +22,7 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/posts", require("./routes/api/posts"));
 
-//Serve static assets in production
+// Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("client/build"));
