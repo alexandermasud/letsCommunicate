@@ -14,7 +14,7 @@ app.use(
 );
 
 // Removed for deployment
-app.get("/", (req, res) => res.send("API Running"));
+// app.get("/", (req, res) => res.send("API Running"));
 
 // Define Routes
 app.use("/api/users", require("./routes/api/users"));
