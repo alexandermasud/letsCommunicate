@@ -44,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/">internalCommunication</Link>
+        <Link to="/">LetsCommunicate</Link>
       </h1>
 
       {!loading && (
