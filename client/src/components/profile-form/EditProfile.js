@@ -144,6 +144,7 @@ const EditProfile = ({
           ></textarea>
         </div>
 
+        {/*
         <div className="form-group social-input">
           <i className="fab fa-linkedin fa-2x"></i>
           <input
@@ -154,6 +155,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
         </div>
+*/}
 
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">
